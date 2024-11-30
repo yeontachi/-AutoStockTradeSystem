@@ -1,4 +1,6 @@
 public class Trade {
+    UserPriceData userData = new UserPriceData();
+
     public void tradeType_Buy(AbstractUser user, AbstractCompany company, int amount) {
         if (user.getMoney() < company.getPrice() * amount) {
             System.out.println(user.getName() + " cannot afford to buy from " + company.getName());
@@ -7,6 +9,7 @@ public class Trade {
         user.setMoney(user.getMoney() - company.getPrice() * amount);
         user.addCompany(company);
         user.addTradeList("buy", company, company.getPrice());
+        userData.UpdateUserPrice(user.getUserId(), user.getMoney(), user.getName());
     }
 
     public void tradeType_Sell(AbstractUser user, AbstractCompany company, int amount) {
@@ -17,5 +20,6 @@ public class Trade {
         user.setMoney(user.getMoney() + company.getPrice() * amount);
         user.deleteCompany(company);
         user.addTradeList("sell", company, company.getPrice());
+        userData.UpdateUserPrice(user.getUserId(), user.getMoney(), user.getName());
     }
 }
