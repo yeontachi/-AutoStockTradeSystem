@@ -23,3 +23,129 @@
 
 6. **기대 효과 및 마무리** (~200자)
    - 이 프로젝트를 통해 배우게 될 점과 프로젝트의 완성 목표를 정리
+
+```
+team-project-2
+├─ .git
+│  ├─ COMMIT_EDITMSG
+│  ├─ config
+│  ├─ description
+│  ├─ FETCH_HEAD
+│  ├─ HEAD
+│  ├─ hooks
+│  │  ├─ applypatch-msg.sample
+│  │  ├─ commit-msg.sample
+│  │  ├─ fsmonitor-watchman.sample
+│  │  ├─ post-update.sample
+│  │  ├─ pre-applypatch.sample
+│  │  ├─ pre-commit.sample
+│  │  ├─ pre-merge-commit.sample
+│  │  ├─ pre-push.sample
+│  │  ├─ pre-rebase.sample
+│  │  ├─ pre-receive.sample
+│  │  ├─ prepare-commit-msg.sample
+│  │  ├─ push-to-checkout.sample
+│  │  ├─ sendemail-validate.sample
+│  │  └─ update.sample
+│  ├─ index
+│  ├─ info
+│  │  └─ exclude
+│  ├─ logs
+│  │  ├─ HEAD
+│  │  └─ refs
+│  │     ├─ heads
+│  │     │  ├─ main
+│  │     │  └─ seonhu
+│  │     └─ remotes
+│  │        └─ origin
+│  │           ├─ HEAD
+│  │           ├─ main
+│  │           └─ seonhu
+│  ├─ objects
+│  │  ├─ 0c
+│  │  │  └─ 9835aa30d993d94baa43c1245aed258edcd364
+│  │  ├─ 11
+│  │  │  └─ 4c4f1ec42cd3221a1ecda624c0d2974299bf94
+│  │  ├─ 1e
+│  │  │  └─ 12390cc9b566d9424941d27ae836ac02fceee6
+│  │  ├─ 3e
+│  │  │  └─ 5a87189e90cb58cbdd8a0beaee66ad6c5376de
+│  │  ├─ 3f
+│  │  │  └─ 58352404898ff1dfab5c00434332e92be71fd7
+│  │  ├─ 40
+│  │  │  └─ 6458e3a539f7040b3945fc322fccf46d5617b0
+│  │  ├─ 49
+│  │  │  └─ faafdeee07f295b167e562562b8f766a060b65
+│  │  ├─ 50
+│  │  │  └─ de9a76f0438a5efaab83948e9f9d0b0b76edb4
+│  │  ├─ 54
+│  │  │  └─ 975b67e790840d91dc8d12ee4d19b29c2a5a2b
+│  │  ├─ 5d
+│  │  │  └─ 71bc120873cf1bcdf43be9eb0669f0aa505a03
+│  │  ├─ 60
+│  │  │  └─ 5afab55056f2f886338bb74e5a0afb513ebf1f
+│  │  ├─ 6e
+│  │  │  └─ a7a6380dc920652580184b3a075a715b9840f8
+│  │  ├─ 75
+│  │  │  └─ d2bedbd50f7782b782b83773552fdbbecd1a2e
+│  │  ├─ 9a
+│  │  │  └─ 6abde788814369e77acd9ce2d007f171c3f3c4
+│  │  ├─ c1
+│  │  │  └─ 09b2d3245daa60e3bc38ee5e7c553d40eff6ed
+│  │  ├─ ce
+│  │  │  └─ a8782f531a3bdef584e5152865045cc71a0270
+│  │  ├─ d5
+│  │  │  └─ 6b2b5db6568c7ecfca2fe1c799338ef11f3b11
+│  │  ├─ fe
+│  │  │  └─ aac273179c4e8947a9638d3e11898c820c3c07
+│  │  ├─ info
+│  │  └─ pack
+│  │     ├─ pack-2b41fd1d5dba175c08381155ab7489c9d4185a55.idx
+│  │     ├─ pack-2b41fd1d5dba175c08381155ab7489c9d4185a55.pack
+│  │     └─ pack-2b41fd1d5dba175c08381155ab7489c9d4185a55.rev
+│  ├─ ORIG_HEAD
+│  ├─ packed-refs
+│  └─ refs
+│     ├─ heads
+│     │  ├─ main
+│     │  └─ seonhu
+│     ├─ remotes
+│     │  └─ origin
+│     │     ├─ HEAD
+│     │     ├─ main
+│     │     └─ seonhu
+│     └─ tags
+├─ .gitattributes
+├─ .gitignore
+├─ app
+│  └─ src
+│     ├─ main
+│     │  ├─ java
+│     │  │  └─ org
+│     │  │     └─ project
+│     │  │        ├─ AbstractCompany.java
+│     │  │        ├─ AutoHandler.java
+│     │  │        ├─ ConcreteCompany.java
+│     │  │        ├─ User.java
+│     │  │        ├─ Main.java
+│     │  │        ├─ Manager.java
+│     │  │        └─ Trade.java
+│     │  └─ resources
+│     └─ test
+│        ├─ java
+│        │  └─ org
+│        │     └─ project
+│        │        └─ MainTest.java
+│        └─ resources
+├─ gradle
+│  ├─ libs.versions.toml
+│  └─ wrapper
+│     ├─ gradle-wrapper.jar
+│     └─ gradle-wrapper.properties
+├─ gradle.properties
+├─ gradlew
+├─ gradlew.bat
+├─ Proposal.md
+└─ README.md
+
+```
