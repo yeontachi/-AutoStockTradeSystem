@@ -48,9 +48,14 @@ public class User {
         return money;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
     public String getName() {
         return name;
     }
+
     public static class Conditions {
         int lowCondition;
         int highCondition;

@@ -12,11 +12,13 @@ public class Trade {
 
         // 거래 실행
         user.updateMoney(-totalPrice);
-        System.out.println(user.getName() + " bought " + amount + " stock(s) of " + company.getName() + " at price " + company.getPrice());
+        System.out.println(user.getName() + " bought " + amount + " stock(s) of " + company.getName() + " at price "
+                + company.getPrice());
     }
 
     public void tradeType_Sell(User user, AbstractCompany company, int amount) {
         // 회사에 대한 조건 확인
+        // UserPriceData UserData = new UserPriceData();
         User.Conditions conditions = user.getConditionsForCompany(company);
         if (conditions == null) {
             System.out.println(user.getName() + " has no conditions set for " + company.getName());
@@ -26,6 +28,8 @@ public class Trade {
         // 거래 실행
         int totalPrice = company.getPrice() * amount;
         user.updateMoney(totalPrice);
-        System.out.println(user.getName() + " sold " + amount + " stock(s) of " + company.getName() + " at price " + company.getPrice());
+        // UserData.UserTradeLog(user, company.getName(), -1, company.getPrice());
+        System.out.println(user.getName() + " sold " + amount + " stock(s) of " + company.getName() + " at price "
+                + company.getPrice());
     }
 }

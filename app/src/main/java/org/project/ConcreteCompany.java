@@ -1,4 +1,5 @@
 package org.project;
+
 import java.util.Random;
 
 public class ConcreteCompany extends AbstractCompany {

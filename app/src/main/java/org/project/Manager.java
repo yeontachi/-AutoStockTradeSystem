@@ -6,6 +6,8 @@ public class Manager extends Thread {
     private boolean isRunning = true;
     private final List<User> users;
     private final List<AbstractCompany> companies;
+    private CompanyData comData = new CompanyData();
+    // private UserPriceData UserData = new UserPriceData();
 
     public Manager(List<User> users, List<AbstractCompany> companies) {
         this.users = users;
@@ -24,6 +26,7 @@ public class Manager extends Thread {
             // 회사 가격 업데이트
             for (AbstractCompany company : companies) {
                 company.updatePrice();
+                comData.UpdateCompanyPrice(company.getCompanyId(), company.getPrice());
                 System.out.println(company.getName() + " new price: " + company.getPrice());
             }
 
@@ -31,13 +34,15 @@ public class Manager extends Thread {
             for (User user : users) {
                 for (AbstractCompany company : companies) {
                     User.Conditions conditions = user.getConditionsForCompany(company);
-                    if (conditions == null) continue;
+                    if (conditions == null)
+                        continue;
 
                     Trade trade = new Trade();
 
                     // 매수 조건 확인
                     if (company.getPrice() < conditions.lowCondition) {
                         trade.tradeType_Buy(user, company, 1);
+                        // UserData.UserTradeLog(user, company.getName(), 1, company.getPrice());
                     }
 
                     // 매도 조건 확인
