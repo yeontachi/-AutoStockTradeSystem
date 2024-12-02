@@ -2,13 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
-/*
- * 3개의 컴퍼니를 생성하고 각 컴퍼니의 주가를 그래프로 표시
- * 좌측 상단의 버튼을 누르면 해당 컴퍼니의 주가 그래프로 변경
- * 실시간 그래프 업데이트 유지
- */
 
 public class CompanyGraphApp {
     public static void main(String[] args) {
@@ -49,33 +42,50 @@ public class CompanyGraphApp {
         // Company 1 버튼
         JButton company1Button = new JButton("Apple");
         company1Button.addActionListener(e -> {
-            selectedCompany[0] = company1; // 선택된 회사 변경
-            selectedPrices[0] = prices1; // 선택된 가격 데이터 변경
-            graphPanel.setPrices(prices1); // 그래프 데이터 변경
+            selectedCompany[0] = company1;
+            selectedPrices[0] = prices1;
+            graphPanel.setPrices(prices1);
+            graphPanel.repaint();
         });
         menuPanel.add(company1Button);
 
         // Company 2 버튼
         JButton company2Button = new JButton("Samsung");
         company2Button.addActionListener(e -> {
-            selectedCompany[0] = company2; // 선택된 회사 변경
-            selectedPrices[0] = prices2; // 선택된 가격 데이터 변경
-            graphPanel.setPrices(prices2); // 그래프 데이터 변경
+            selectedCompany[0] = company2;
+            selectedPrices[0] = prices2;
+            graphPanel.setPrices(prices2);
+            graphPanel.repaint();
         });
         menuPanel.add(company2Button);
 
         // Company 3 버튼
         JButton company3Button = new JButton("Naver");
         company3Button.addActionListener(e -> {
-            selectedCompany[0] = company3; // 선택된 회사 변경
-            selectedPrices[0] = prices3; // 선택된 가격 데이터 변경
-            graphPanel.setPrices(prices3); // 그래프 데이터 변경
+            selectedCompany[0] = company3;
+            selectedPrices[0] = prices3;
+            graphPanel.setPrices(prices3);
+            graphPanel.repaint();
         });
         menuPanel.add(company3Button);
 
+        // 사용자 버튼
+        JButton userButton = new JButton("Open User Window");
+        userButton.addActionListener(e -> SwingUtilities.invokeLater(() -> {
+            ConcreteUser user = new ConcreteUser(1, "JaeHyuk", 100000);
+
+            // 초기 사용자 주식 설정
+            user.addStock(company1, 10);
+            user.addStock(company2, 10);
+            user.addStock(company3, 10);
+
+            // UserWindow 실행
+            new UserWindow(user, List.of(company1, company2, company3));
+        }));
+        menuPanel.add(userButton);
+
         // 타이머로 모든 회사 가격 업데이트 및 선택된 회사 그래프 갱신
         Timer timer = new Timer(1000, e -> {
-            // 모든 회사 가격 업데이트
             company1.updatePrice();
             prices1.add(company1.getPrice());
 
@@ -85,34 +95,11 @@ public class CompanyGraphApp {
             company3.updatePrice();
             prices3.add(company3.getPrice());
 
-            // 선택된 회사 그래프 업데이트
             graphPanel.setPrices(selectedPrices[0]);
+            graphPanel.repaint();
         });
         timer.start();
 
         frame.setVisible(true);
-    }
-}
-
-class ConcreteCompany {
-    private final String companyId;
-    private final String name;
-    private int price;
-
-    public ConcreteCompany(String companyId, String name, int initialPrice) {
-        this.companyId = companyId;
-        this.name = name;
-        this.price = initialPrice;
-    }
-
-    public void updatePrice() {
-        Random random = new Random();
-        double factor = 0.8 + 0.4 * random.nextDouble(); // 0.8 ~ 1.2 범위의 난수
-        this.price = (int) (this.price * factor);
-        System.out.println("Updated price for " + name + ": " + price);
-    }
-
-    public int getPrice() {
-        return price;
     }
 }
