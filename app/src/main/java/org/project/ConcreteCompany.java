@@ -1,17 +1,31 @@
-package org.project;
-
 import java.util.Random;
 
-public class ConcreteCompany extends AbstractCompany {
+public class ConcreteCompany {
+    private final String companyId;
+    private final String name;
+    private int price;
+
     public ConcreteCompany(String companyId, String name, int initialPrice) {
-        super(companyId, name, initialPrice);
+        this.companyId = companyId;
+        this.name = name;
+        this.price = initialPrice; // 초기 가격 설정
     }
 
-    @Override
+    public String getCompanyId() {
+        return companyId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
     public void updatePrice() {
         Random random = new Random();
-        double changeRate = 0.8 + (0.4 * random.nextDouble());
-        price = (int) (price * changeRate);
-        System.out.println("Updated price for " + getName() + ": " + price);
+        double changeFactor = 0.9 + (1.1 - 0.9) * random.nextDouble(); // 10% 변동
+        price = (int) (price * changeFactor);
     }
 }

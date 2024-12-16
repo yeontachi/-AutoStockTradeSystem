@@ -1,4 +1,3 @@
-package org.project;
 public abstract class AbstractCompany {
     private final String companyId;
     private final String name;

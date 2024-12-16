@@ -1,35 +1,26 @@
-package org.project;
-
 public class Trade {
-    public void tradeType_Buy(User user, AbstractCompany company, int amount) {
-        int totalPrice = company.getPrice() * amount;
-
-        // 구매 가능 여부 확인
-        if (user.getMoney() < totalPrice) {
-            System.out.println(user.getName() + " cannot afford to buy from " + company.getName());
+    // 주식 구매 메서드
+    public void tradeType_Buy(ConcreteUser user, ConcreteCompany company, int amount) {
+        int totalCost = company.getPrice() * amount;
+        if (user.getMoney() < totalCost) {
+            System.out.println(user.getName() + " cannot afford to buy " + amount + " stocks of " + company.getName());
             return;
         }
-
-        // 거래 실행
-        user.updateMoney(-totalPrice);
-        System.out.println(user.getName() + " bought " + amount + " stock(s) of " + company.getName() + " at price "
-                + company.getPrice());
+        user.setMoney(user.getMoney() - totalCost);
+        user.addStock(company, amount);
+        user.addTradeList("buy", company, company.getPrice());
     }
 
-    public void tradeType_Sell(User user, AbstractCompany company, int amount) {
-        // 회사에 대한 조건 확인
-        // UserPriceData UserData = new UserPriceData();
-        User.Conditions conditions = user.getConditionsForCompany(company);
-        if (conditions == null) {
-            System.out.println(user.getName() + " has no conditions set for " + company.getName());
+    // 주식 판매 메서드
+    public void tradeType_Sell(ConcreteUser user, ConcreteCompany company, int amount) {
+        int ownedStocks = user.getStockCount(company);
+        if (ownedStocks < amount) {
+            System.out.println(user.getName() + " does not have enough stocks to sell from " + company.getName());
             return;
         }
-
-        // 거래 실행
-        int totalPrice = company.getPrice() * amount;
-        user.updateMoney(totalPrice);
-        // UserData.UserTradeLog(user, company.getName(), -1, company.getPrice());
-        System.out.println(user.getName() + " sold " + amount + " stock(s) of " + company.getName() + " at price "
-                + company.getPrice());
+        int totalRevenue = company.getPrice() * amount;
+        user.setMoney(user.getMoney() + totalRevenue);
+        user.removeStock(company, amount);
+        user.addTradeList("sell", company, company.getPrice());
     }
 }
