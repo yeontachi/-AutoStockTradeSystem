@@ -1,3 +1,5 @@
+package org.project;
+
 public class AutoHandler {
     private final ConcreteUser user;
     private final ConcreteCompany company;

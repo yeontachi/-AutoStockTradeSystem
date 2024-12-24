@@ -1,3 +1,4 @@
+package org.project;
 public class Trade {
     // 주식 구매 메서드
     public void tradeType_Buy(ConcreteUser user, ConcreteCompany company, int amount) {
